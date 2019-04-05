@@ -11,15 +11,10 @@ const { parse } = require("url");
 const server = express();
 const route = pathMatch();
 
-appapp.prepare().then(() => {
-  // server.use("/_next", express.static(path.join(__dirname, ".next")));
-  server.get("/", (req, res) => app.render(req, res, "/"));
-  server.get("/dogs", (req, res) => app.render(req, res, "/dogs"));
-  server.get("/dogs/:breed", (req, res) => {
-    const params = route("/dogs/:breed")(parse(req.url).pathname);
-    return app.render(req, res, "/dogs/_breed", params);
-  });
-  server.get("*", (req, res) => handle(req, res));
-})
+server.use("/_next", express.static(path.join(__dirname, ".next")));
+server.get("/", (req, res) => app.render(req, res, "/"));
+server.get("/a", (req, res) => app.render(req, res, "/a"));
+server.get("/b", (req, res) => app.render(req, res, "/b"));
+server.get("*", (req, res) => handle(req, res));
 
 module.exports = server;
