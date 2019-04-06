@@ -1,20 +1,32 @@
-// server.js
 const express = require("express");
-const path = require("path");
-const dev = process.env.NODE_ENV !== "production";
 const next = require("next");
-const pathMatch = require("path-match");
+
+const port = parseInt(process.env.PORT, 10) || 4000;
+const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const { parse } = require("url");
 
-const server = express();
-const route = pathMatch();
+app.prepare().then(() => {
+  const server = express();
 
-server.use("/_next", express.static(path.join(__dirname, ".next")));
-server.get("/", (req, res) => app.render(req, res, "/"));
-server.get("/a", (req, res) => app.render(req, res, "/a"));
-server.get("/b", (req, res) => app.render(req, res, "/b"));
-server.get("*", (req, res) => handle(req, res));
+  server.get("/a", (req, res) => {
+    return app.render(req, res, "/a", req.query);
+  });
 
-module.exports = server;
+  server.get("/b", (req, res) => {
+    return app.render(req, res, "/b", req.query);
+  });
+
+  server.get('/b/:id', (req, res) => {
+    return app.render(req, res, '/b_detail', { id: req.params.id })
+  })
+
+  server.get("*", (req, res) => {
+    return handle(req, res);
+  });
+
+  server.listen(port, err => {
+    if (err) throw err;
+    console.log(`> Ready on http://localhost:${port}`);
+  });
+});
