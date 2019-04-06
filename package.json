@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "deploy": "next build && sls deploy"
+    "deploy": "sls deploy"
   },
   "dependencies": {
     "axios": "^0.18.0",

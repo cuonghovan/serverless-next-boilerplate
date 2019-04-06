@@ -5,18 +5,18 @@ provider:
   runtime: nodejs8.10
   stage: ${self:custom.secrets.NODE_ENV}
   region: ap-southeast-1
-  environment: 
+  environment:
     NODE_ENV: ${self:custom.secrets.NODE_ENV}
 
-functions:
-  server:
-    handler: index.server
-    events:
-      - http: ANY /
-      - http: ANY /{proxy+}
-  
+# functions:
+#   server:
+#     handler: index.server
+#     events:
+#       - http: ANY /
+#       - http: ANY /{proxy+}
+
 plugins:
-  # - serverless-nextjs-plugin
+  - serverless-nextjs-plugin
   - serverless-apigw-binary
   - serverless-domain-manager
 
@@ -24,17 +24,26 @@ custom:
   secrets: ${file(secrets.json)}
   serverless-nextjs:
     nextConfigDir: "./"
+    pageConfig:
+      b_detail:
+        events:
+          - http:
+              path: b/{id}
+              request:
+                parameters:
+                  paths:
+                    id: true
   apigwBinary:
     types:
-      - '*/*'
+      - "*/*"
   customDomain:
     domainName: ${self:custom.secrets.DOMAIN}
-    basePath: ''
+    basePath: ""
     stage: ${self:custom.secrets.NODE_ENV}
     createRoute53Record: true
   #   endpointType: 'regional'
-    # if the ACM certificate is created in a region except for `'us-east-1'` you need `endpointType: 'regional'`
+  # if the ACM certificate is created in a region except for `'us-east-1'` you need `endpointType: 'regional'`
 
-# package:
-#   exclude:
-#     - ./**
+package:
+  exclude:
+    - ./**
