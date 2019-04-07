@@ -11,4 +11,3 @@ deploy:
  stage: deploy
  script:
   - bash deploy.sh production
-
