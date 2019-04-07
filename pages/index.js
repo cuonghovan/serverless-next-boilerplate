@@ -5,7 +5,7 @@ export default () => (
   <ul>
     <li>
       <Link href="/a" as="/a">
-        <a>a</a>
+        <a>a1</a>
       </Link>
     </li>
     <li>

@@ -12,4 +12,4 @@ before_script:
 deploy:
  stage: deploy
  script:
-  - bash deploy.sh production
+  - yarn deploy
