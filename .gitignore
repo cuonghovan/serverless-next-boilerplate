@@ -4,7 +4,7 @@ jspm_packages
 
 # Serverless directories
 .serverless
-secrets.json
-.next
-sls-next-build
 .env
+.next
+secrets.json
+sls-next-build

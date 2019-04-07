@@ -3,21 +3,29 @@ service: ssr-react-next
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: ${self:custom.secrets.node_env}
+  stage: ${self:custom.secrets.STAGE}
   region: ap-southeast-1
   environment:
-    NODE_ENV: ${self:custom.secrets.node_env}
+    NODE_ENV: ${self:custom.secrets.STAGE}
 
 plugins:
-  - serverless-nextjs-plugin
-  - serverless-apigw-binary
-  - serverless-domain-manager
   - serverless-offline
+  - serverless-nextjs-plugin
+  - serverless-domain-manager
+
+functions:
+  hello:
+    handler: apis/hello.hello
+    events:
+      - http:
+          path: /hello
+          method: get
+
 
 custom:
-  secrets: ${file(./config/envVars.js):getEnvVars}
+  secrets: ${file(./configs/envVars.js):getEnvVars}
   serverless-nextjs:
-    nextConfigDir: "./"
+    nextConfigDir: "./app/"
     pageConfig:
       b_detail:
         events:
@@ -27,16 +35,12 @@ custom:
                 parameters:
                   paths:
                     id: true
-  apigwBinary:
-    types:
-      - "*/*"
+
   customDomain:
-    domainName: ${self:custom.secrets.domain}
+    domainName: ${self:custom.secrets.DOMAIN}
     basePath: ""
-    stage: ${self:custom.secrets.node_env}
+    stage: ${self:custom.secrets.STAGE}
     createRoute53Record: true
-  # endpointType: 'regional'
-  # if the ACM certificate is created in a region except for `'us-east-1'` you need `endpointType: 'regional'`
 
 package:
   exclude:

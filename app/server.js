@@ -3,7 +3,7 @@ const next = require("next");
 
 const port = parseInt(process.env.PORT, 10) || 4000;
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const app = next({ dev, dir: "./app" });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -17,9 +17,9 @@ app.prepare().then(() => {
     return app.render(req, res, "/b", req.query);
   });
 
-  server.get('/b/:id', (req, res) => {
-    return app.render(req, res, '/b_detail', { id: req.params.id })
-  })
+  server.get("/b/:id", (req, res) => {
+    return app.render(req, res, "/b_detail", { id: req.params.id });
+  });
 
   server.get("*", (req, res) => {
     return handle(req, res);

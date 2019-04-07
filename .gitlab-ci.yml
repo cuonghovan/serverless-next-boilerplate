@@ -12,21 +12,23 @@ before_script:
 deploy_staging:
   stage: deploy
   script:
-    - yarn deploy
+    - serverless create_domain
+    - serverless deploy
   variables:
-    NODE_ENV: "staging"
-    DOMAIN: "gowind.tk"
-  only: 
+    DOMAIN: "stag.gowind.tk"
+    STAGE: "stag"
+  only:
     refs:
       - develop
 
 deploy_production:
   stage: deploy
   script:
-    - yarn deploy
+    - serverless create_domain
+    - serverless deploy
   variables:
-    NODE_ENV: "production"
     DOMAIN: "gowind.tk"
-  only: 
+    STAGE: "prod"
+  only:
     refs:
       - release
