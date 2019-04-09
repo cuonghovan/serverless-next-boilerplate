@@ -7,7 +7,12 @@ provider:
   region: ap-southeast-1
 
 plugins:
+  # Support deploying Next app pages as lambda functions to AWS,
+  # uploading app statics to S3
+  # and handling custom routing in serverside
   - serverless-nextjs-plugin
+  # Create custom domain name for API in AWS API Gateway 
+  # if not existed when deploy
   - serverless-domain-manager
 
 custom:
