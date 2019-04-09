@@ -1,10 +1,12 @@
 # package directories
 node_modules
-jspm_packages
 
 # Serverless directories
-.serverless
-.env
-.next
-secrets.json
-sls-next-build
+*/.serverless
+*/sls-next-build
+
+# Next directories
+*/.next
+
+# Enviroment variables
+*/.env

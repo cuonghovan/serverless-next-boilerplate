@@ -4,10 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:app": "node app/server.js",
-    "start:api": "sls offline",
     "build": "next build",
-    "deploy": "SLS_DEBUG=* sls deploy"
+    "start:app": "node app/server.js",
+    "start:apis": "cd ./apis && sls offline && cd ..",
+    "deploy:app": "cd ./app && sls create_domain && sls deploy && cd ..",
+    "deploy:apis": "cd ./apis && sls create_domain && sls deploy && cd ..",
+    "deploy": "npm run deploy:apis && npm run deploy:app"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -25,6 +27,7 @@
     "serverless-http": "^1.9.1",
     "serverless-nextjs-plugin": "^1.5.2",
     "serverless-offline": "^4.9.4",
+    "serverless-s3-local": "^0.3.23",
     "webpack": "^4.29.6"
   }
 }

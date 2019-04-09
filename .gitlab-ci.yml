@@ -4,19 +4,19 @@ stages:
   - deploy
 
 before_script:
+  - npm install -g serverless
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn install
-  - npm install -g serverless
 
 deploy_staging:
   stage: deploy
   script:
-    - serverless create_domain
-    - serverless deploy
+    - yarn deploy
   variables:
-    DOMAIN: "stag.gowind.tk"
     STAGE: "stag"
+    DOMAIN: "stag.gowind.tk"
+    API_DOMAIN: "stag.api.gowind.tk"
   only:
     refs:
       - develop
@@ -24,11 +24,11 @@ deploy_staging:
 deploy_production:
   stage: deploy
   script:
-    - serverless create_domain
-    - serverless deploy
+    - yarn deploy
   variables:
-    DOMAIN: "gowind.tk"
     STAGE: "prod"
+    DOMAIN: "gowind.tk"
+    API-DOMAIN: "api.gowind.tk"
   only:
     refs:
       - release

@@ -1,0 +1,30 @@
+service: ssr-next-apis
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${self:custom.secrets.STAGE}
+  region: ap-southeast-1
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+
+functions:
+  getHelloMessage:
+    handler: hello.getMessage
+    events:
+      - http:
+          path: /hello
+          method: get
+
+custom:
+  serverless-offline:
+    port: 8000
+  secrets: ${file(./configs/envVars.js):getEnvVars}
+  customDomain:
+    domainName: ${self:custom.secrets.API_DOMAIN}
+    basePath: ""
+    stage: ${self:custom.secrets.STAGE}
+    createRoute53Record: true
+

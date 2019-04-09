@@ -1,4 +1,4 @@
-const envVars = require("../configs/envVars").getEnvVars();
+const envVars = require("./configs/envVars").getEnvVars();
 let assetPrefix = "";
 
 if (envVars.STAGE !== "dev") {

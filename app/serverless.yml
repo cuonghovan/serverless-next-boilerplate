@@ -5,27 +5,15 @@ provider:
   runtime: nodejs8.10
   stage: ${self:custom.secrets.STAGE}
   region: ap-southeast-1
-  environment:
-    NODE_ENV: ${self:custom.secrets.STAGE}
 
 plugins:
-  - serverless-offline
   - serverless-nextjs-plugin
   - serverless-domain-manager
-
-functions:
-  hello:
-    handler: apis/hello.hello
-    events:
-      - http:
-          path: /hello
-          method: get
-
 
 custom:
   secrets: ${file(./configs/envVars.js):getEnvVars}
   serverless-nextjs:
-    nextConfigDir: "./app/"
+    nextConfigDir: "./"
     pageConfig:
       b_detail:
         events:
@@ -35,7 +23,6 @@ custom:
                 parameters:
                   paths:
                     id: true
-
   customDomain:
     domainName: ${self:custom.secrets.DOMAIN}
     basePath: ""
