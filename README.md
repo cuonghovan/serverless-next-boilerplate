@@ -9,10 +9,8 @@ Install serverless framework globally: npm install -g serverless
     ```
     yarn start
     ```
-4. To deploy to staging or production, edit .env file and run bellow commands
-    ```
-    sls create_domain
-    ```
+4. To deploy to staging or production, edit .env file in /app and /apis folder and run bellow commands
+
     ```
     yarn deploy
     ```
