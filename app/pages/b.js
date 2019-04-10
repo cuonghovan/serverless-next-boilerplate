@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Link from "next/link";
-import DefaultLayout from "../layouts/default";
+import DefaultLayout from "../layouts/Default";
 
 const API_DOMAIN =
   process.env.STAGE === "dev"
