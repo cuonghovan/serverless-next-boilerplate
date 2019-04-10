@@ -14,6 +14,12 @@ const meta = {
   description: "Page b",
 };
 
+const linkStyle = {
+  textDecoration: "underline",
+  color: "#3366BB",
+  cursor: "pointer",
+};
+
 class B extends React.Component {
   static async getInitialProps() {
     const res = await axios.get(`${API_DOMAIN}/hello`);
@@ -30,9 +36,9 @@ class B extends React.Component {
     return (
       <DefaultLayout meta={meta}>
         <>
-          <div>{message}</div>
+          <h3>{message}</h3>
           <Link href="/b_detail?id=xxx" as="/b/xxx">
-            <span>Detail</span>
+            <span style={linkStyle}>Detail</span>
           </Link>
         </>
       </DefaultLayout>
