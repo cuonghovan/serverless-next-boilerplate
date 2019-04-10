@@ -9,27 +9,27 @@ exports[`search-bar renders correctly 1`] = `
       <Link
         href="/"
       >
-        <a>
+        <span>
           home
-        </a>
+        </span>
       </Link>
     </li>
     <li>
       <Link
         href="/a"
       >
-        <a>
+        <span>
           a
-        </a>
+        </span>
       </Link>
     </li>
     <li>
       <Link
         href="/b"
       >
-        <a>
+        <span>
           b
-        </a>
+        </span>
       </Link>
     </li>
   </ul>
