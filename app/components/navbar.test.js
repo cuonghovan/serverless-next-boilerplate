@@ -1,4 +1,4 @@
-/*global shallow mount*/
+/* global shallow */
 import React from "react";
 import Link from "next/link";
 import Navbar from "./Navbar";

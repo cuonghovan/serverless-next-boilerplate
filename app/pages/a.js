@@ -1,8 +1,9 @@
+import React from "react";
 import DefaultLayout from "../layouts/Default";
 
 const meta = {
   title: "Page a",
-  description: "Page a"
+  description: "Page a",
 };
 
 export default () => (

@@ -1,4 +1,5 @@
 const envVars = require("./configs/envVars").getEnvVars();
+
 let assetPrefix = "";
 
 if (envVars.STAGE !== "dev") {
@@ -9,5 +10,5 @@ if (envVars.STAGE !== "dev") {
 
 module.exports = {
   assetPrefix,
-  env: envVars
+  env: envVars,
 };
