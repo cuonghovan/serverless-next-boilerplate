@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DefaultLayout from "../layouts/Default";
+import DefaultLayout from "../layouts/DefaultLayout";
 
 const meta = {
   title: "Page b detail",

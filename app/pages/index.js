@@ -1,5 +1,5 @@
 import React from "react";
-import DefaultLayout from "../layouts/Default";
+import DefaultLayout from "../layouts/DefaultLayout";
 
 const meta = {
   title: "Serverless + Next",
