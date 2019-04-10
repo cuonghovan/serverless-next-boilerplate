@@ -12,7 +12,10 @@ const DefaultLayout = ({ children, meta }) => (
 );
 
 DefaultLayout.propTypes = {
-  children: PropTypes.instanceOf(Object).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
   meta: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,

@@ -1,4 +1,4 @@
-service: ssr-next-apis
+service: sls-next-apis
 
 provider:
   name: aws
@@ -27,4 +27,3 @@ custom:
     basePath: ""
     stage: ${self:custom.secrets.STAGE}
     createRoute53Record: true
-

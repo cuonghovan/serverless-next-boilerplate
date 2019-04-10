@@ -18,7 +18,7 @@ class BDetail extends React.Component {
     const { id } = this.props;
     return (
       <DefaultLayout meta={meta}>
-        <h1>ID: {id}</h1>
+        <h3>ID: {id}</h3>
       </DefaultLayout>
     );
   }

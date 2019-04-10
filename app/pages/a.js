@@ -7,5 +7,7 @@ const meta = {
 };
 
 export default () => (
-  <DefaultLayout meta={meta}>{process.env.STAGE}</DefaultLayout>
+  <DefaultLayout meta={meta}>
+    <h3>Stage: {process.env.STAGE}</h3>
+  </DefaultLayout>
 );

@@ -1,4 +1,4 @@
-service: ssr-react-next
+service: sls-next-app
 
 provider:
   name: aws

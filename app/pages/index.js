@@ -6,4 +6,8 @@ const meta = {
   description: "Demo serverless application created by Nextjs",
 };
 
-export default () => <DefaultLayout meta={meta} />;
+export default () => (
+  <DefaultLayout meta={meta}>
+    <h3>Welcome to Serverless + Nextjs boilerplate</h3>
+  </DefaultLayout>
+);
