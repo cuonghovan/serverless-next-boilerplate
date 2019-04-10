@@ -19,7 +19,7 @@ exports[`search-bar renders correctly 1`] = `
         href="/a"
       >
         <span>
-          a
+          Page a
         </span>
       </Link>
     </li>
@@ -28,7 +28,7 @@ exports[`search-bar renders correctly 1`] = `
         href="/b"
       >
         <span>
-          b
+          Page b
         </span>
       </Link>
     </li>

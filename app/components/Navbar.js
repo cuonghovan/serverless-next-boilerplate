@@ -11,12 +11,12 @@ export default () => (
       </li>
       <li>
         <Link href="/a">
-          <span>a</span>
+          <span>Page a</span>
         </Link>
       </li>
       <li>
         <Link href="/b">
-          <span>b</span>
+          <span>Page b</span>
         </Link>
       </li>
     </ul>
