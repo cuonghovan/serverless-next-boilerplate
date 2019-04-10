@@ -1,6 +1,11 @@
 image: node:8.10
 
+cache:
+  paths:
+    - node_modules/
+    
 stages:
+  - test
   - deploy
 
 before_script:
@@ -8,6 +13,16 @@ before_script:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn install
+
+lint:
+  stage: test
+  script:
+    - yarn lint
+
+test:
+  stage: test
+  script:
+    - yarn test
 
 deploy_staging:
   stage: deploy
